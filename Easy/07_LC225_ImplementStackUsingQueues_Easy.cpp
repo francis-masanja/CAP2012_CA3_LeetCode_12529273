@@ -30,28 +30,44 @@
 #include <queue>
 using namespace std;
 
+struct Data{
+    int data;
+    Data* next;
+};
+
 class MyStack {
+private:
+    Data* newData = new Data;
+    Data* head = new Data;
 public:
     MyStack() {
-        // TODO: initialize your queue(s)
+        head = nullptr;
     }
-
+    
     void push(int x) {
-        // TODO: implement
+        newData -> data = x;
+        newData -> next = nullptr;
+        head = newData;
     }
-
+    
     int pop() {
-        // TODO: implement
-        return 0;
+        if (head != nullptr){
+            Data* tmp = head;
+            head = head -> next;
+            return tmp -> data;
+            delete tmp;
+        }
+        return -1;
     }
-
+    
     int top() {
-        // TODO: implement
-        return 0;
+        return head -> data;
     }
-
+    
     bool empty() {
-        // TODO: implement
+        if(head == nullptr){
+            return false;
+        }
         return true;
     }
 };

@@ -34,7 +34,8 @@
 #include <iostream>
 using namespace std;
 
-lass MyLinkedList {
+#include <vector>
+class MyLinkedList {
 private:
     struct ListNode {
         int val;

@@ -33,6 +33,7 @@
 //   deleteLast, getFront, getRear, isEmpty, isFull.
 //
 // TODO: implement the methods below (no class Solution).
+#include <vector>
 
 #include <iostream>
 using namespace std;

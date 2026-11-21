@@ -32,6 +32,7 @@ bool validateStackSequences(vector<int>& pushed, vector<int>& popped) {
 
          while(!s.empty() && s.top()==popped[j]){
              s.pop();
+#include <stack>
              j++;
          }
      }

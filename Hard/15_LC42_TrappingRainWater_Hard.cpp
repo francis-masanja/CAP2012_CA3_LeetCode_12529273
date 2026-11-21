@@ -57,7 +57,6 @@ int trap(vector<int>& height) {
 
      return water;
  }
-}
 
 int main() {
     {   // Case 1

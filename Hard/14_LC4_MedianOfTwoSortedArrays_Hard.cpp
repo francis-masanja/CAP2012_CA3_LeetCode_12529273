@@ -63,7 +63,6 @@ double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
 
     return (v[n / 2 - 1] + (double)v[n / 2]) / 2.0;
 }
-}
 
 int main() {
     cout << fixed << setprecision(5);

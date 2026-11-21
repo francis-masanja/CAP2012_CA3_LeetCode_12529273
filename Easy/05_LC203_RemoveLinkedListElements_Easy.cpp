@@ -29,8 +29,13 @@ struct ListNode {
 
 // ---- your function goes here ----
 ListNode* removeElements(ListNode* head, int val) {
-    // TODO: implement
-    return head;
+    ListNode* tmp = head;
+    while(tmp != nullptr){
+        if(tmp -> val == val){
+            tmp -> next = tmp -> next -> next;
+        }
+    }
+    return tmp;
 }
 
 // ---- helpers for the test harness ----

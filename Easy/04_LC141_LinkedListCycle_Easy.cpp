@@ -35,7 +35,16 @@ struct ListNode {
 
 // ---- your function goes here ----
 bool hasCycle(ListNode* head) {
-    // TODO: implement
+   ListNode* tmp = head;
+   ListNode* t = head;
+   while(tmp != nullptr && tmp -> next != nullptr){
+       tmp = tmp -> next -> next;
+       t = t -> next;
+       if(tmp == t){
+           return true;
+       }
+   }
+  
     return false;
 }
 

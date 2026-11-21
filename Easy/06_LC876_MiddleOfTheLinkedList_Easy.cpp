@@ -27,7 +27,13 @@ struct ListNode {
 
 // ---- your function goes here ----
 ListNode* middleNode(ListNode* head) {
-    // TODO: implement
+    ListNode* tmp = head;
+    ListNode* t = head;
+    while(tmp != nullptr && tmp -> next != nullptr){
+        tmp = tmp -> next -> next;
+        t = t -> next;
+    }
+    return t;
     return head;
 }
 

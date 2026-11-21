@@ -48,8 +48,14 @@ struct ListNode {
 
 // ---- your function goes here ----
 ListNode* getIntersectionNode(ListNode* headA, ListNode* headB) {
-    // TODO: implement
-    return nullptr;
+   ListNode* tmpA = headA;
+          ListNode* tmpB = headB;
+  
+          while(tmpA != tmpB){
+              tmpA = (tmpA == nullptr) ? headB : tmpA->next;
+              tmpB = (tmpB == nullptr) ? headA : tmpB->next;
+          }
+          return tmpA;
 }
 
 // ---- helpers for the test harness ----

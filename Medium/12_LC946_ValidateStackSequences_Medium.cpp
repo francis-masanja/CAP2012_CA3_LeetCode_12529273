@@ -24,8 +24,19 @@ using namespace std;
 
 // ---- your function goes here ----
 bool validateStackSequences(vector<int>& pushed, vector<int>& popped) {
-    // TODO: implement
-    return false;
+    stack<int>s;
+     int j=0;
+
+     for(int i=0;i<pushed.size();i++){
+         s.push(pushed[i]);
+
+         while(!s.empty() && s.top()==popped[j]){
+             s.pop();
+             j++;
+         }
+     }
+
+     return s.empty();
 }
 
 int main() {

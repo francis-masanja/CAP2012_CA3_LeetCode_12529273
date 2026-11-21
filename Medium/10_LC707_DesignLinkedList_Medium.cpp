@@ -34,31 +34,96 @@
 #include <iostream>
 using namespace std;
 
-class MyLinkedList {
+lass MyLinkedList {
+private:
+    struct ListNode {
+        int val;
+        ListNode* next;
+
+        ListNode(int x) {
+            val = x;
+            next = nullptr;
+        }
+    };
+
+    ListNode* head;
+    int size;
+
 public:
     MyLinkedList() {
-        // TODO: initialize
+        head = new ListNode(0);  
+        size = 0;
     }
 
     int get(int index) {
-        // TODO: implement
-        return -1;
+        if(index < 0 || index >= size)
+            return -1;
+
+        ListNode* curr = head->next;
+
+        for(int i = 0; i < index; i++) {
+            curr = curr->next;
+        }
+
+        return curr->val;
     }
 
     void addAtHead(int val) {
-        // TODO: implement
+        addAtIndex(0, val);
     }
 
     void addAtTail(int val) {
-        // TODO: implement
+        addAtIndex(size, val);
     }
 
     void addAtIndex(int index, int val) {
-        // TODO: implement
+        if(index < 0)
+            index = 0;
+
+        if(index > size)
+            return;
+
+        ListNode* curr = head;
+
+        for(int i = 0; i < index; i++) {
+            curr = curr->next;
+        }
+
+        ListNode* newNode = new ListNode(val);
+
+        newNode->next = curr->next;
+        curr->next = newNode;
+
+        size++;
     }
 
     void deleteAtIndex(int index) {
-        // TODO: implement
+        if(index < 0 || index >= size)
+            return;
+
+        ListNode* curr = head;
+
+        for(int i = 0; i < index; i++) {
+            curr = curr->next;
+        }
+
+        ListNode* temp = curr->next;
+
+        curr->next = temp->next;
+
+        delete temp;
+
+        size--;
+    }
+
+    ~MyLinkedList() {
+        ListNode* curr = head;
+
+        while(curr != nullptr) {
+            ListNode* temp = curr;
+            curr = curr->next;
+            delete temp;
+        }
     }
 };
 

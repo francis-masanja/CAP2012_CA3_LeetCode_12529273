@@ -38,49 +38,74 @@
 using namespace std;
 
 class MyCircularDeque {
+    vector<int>a;
+    int f,r,s,k;
+
 public:
     MyCircularDeque(int k) {
-        // TODO: initialize with capacity k
+        this->k=k;
+        a.resize(k);
+        f=0;
+        r=-1;
+        s=0;
     }
 
     bool insertFront(int value) {
-        // TODO: implement
-        return false;
-    }
-
-    bool insertLast(int value) {
-        // TODO: implement
-        return false;
-    }
-
-    bool deleteFront() {
-        // TODO: implement
-        return false;
-    }
-
-    bool deleteLast() {
-        // TODO: implement
-        return false;
-    }
-
-    int getFront() {
-        // TODO: implement
-        return -1;
-    }
-
-    int getRear() {
-        // TODO: implement
-        return -1;
-    }
-
-    bool isEmpty() {
-        // TODO: implement
+        if(isFull()) return false;
+        f=(f-1+k)%k;
+        a[f]=value;
+        if(s==0)r=f;
+        s++;
         return true;
     }
 
+    bool insertLast(int value) {
+        if(isFull())return false;
+        r=(r+1)%k;
+        a[r]=value;
+        if(s==0)f=r;
+        s++;
+        return true;
+    }
+
+    bool deleteFront() {
+        if(isEmpty())return false;
+        f=(f+1)%k;
+        s--;
+        if(s==0){
+            f=0;
+            r=-1;
+        }
+        return true;
+    }
+
+    bool deleteLast() {
+        if(isEmpty())return false;
+        r=(r-1+k)%k;
+        s--;
+        if(s==0){
+            f=0;
+            r=-1;
+        }
+        return true;
+    }
+
+    int getFront() {
+        if(isEmpty())return -1;
+        return a[f];
+    }
+
+    int getRear() {
+        if(isEmpty())return -1;
+        return a[r];
+    }
+
+    bool isEmpty() {
+        return s==0;
+    }
+
     bool isFull() {
-        // TODO: implement
-        return false;
+        return s==k;
     }
 };
 
